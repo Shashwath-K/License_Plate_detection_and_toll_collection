@@ -10,5 +10,5 @@ Version 1 introduces a simple **Python-based GUI application** for extracting te
 - Part of the core functionality for testing OCR separately from the GUI.
 #### Requirements 
 ``` bash
- pip install opencv-python pytesseract pygame numpy
+ pip install opencv-python pytesseract pygame numpy easyocr matplotlib numpy pillow
 ```
