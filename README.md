@@ -3,3 +3,8 @@ License_Plate_detection_and_toll_collection is a Python-based computer vision pr
 
 ## Version 1: License Plate Text Extraction with GUI
 Version 1 introduces a simple **Python-based GUI application** for extracting text from license plates using `EasyOCR` and `OpenCV`. It processes images offline and displays the results in a Tkinter interface.
+
+### Added: extract_img.py
+- A utility script that extracts text from a given license plate image.  
+- Uses EasyOCR to detect text and visualize results with OpenCV and Matplotlib.  
+- Part of the core functionality for testing OCR separately from the GUI.
