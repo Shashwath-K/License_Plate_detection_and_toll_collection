@@ -8,3 +8,7 @@ Version 1 introduces a simple **Python-based GUI application** for extracting te
 - A utility script that extracts text from a given license plate image.  
 - Uses EasyOCR to detect text and visualize results with OpenCV and Matplotlib.  
 - Part of the core functionality for testing OCR separately from the GUI.
+#### Requirements 
+``` bash
+ pip install opencv-python pytesseract pygame numpy
+```
