@@ -21,3 +21,7 @@ Image showing the downloading of the text detection model required by EasyOCR.
 **Version 0.1 - Early Output Example**  
 Initial version showing detection errors and limited accuracy (~72%).  
 ![Version 0.1 Output](./assets/ver0_1.png)
+
+
+## Version 1.1: License Plate Text Extraction with GUI
+This version is made with the intention of gamifying the experience. This is just a random alpha phase for the project where we test out all the grounds on making the user experience better in the view of user requirements.
