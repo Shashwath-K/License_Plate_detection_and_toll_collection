@@ -12,3 +12,12 @@ Version 1 introduces a simple **Python-based GUI application** for extracting te
 ``` bash
  pip install opencv-python pytesseract pygame numpy easyocr matplotlib numpy pillow
 ```
+### 📷 Snapshots
+
+**Model Download Initialization**  
+Image showing the downloading of the text detection model required by EasyOCR.  
+![Model Downloading](assets/Downloading_Detection_model.png)
+
+**Version 0.1 - Early Output Example**  
+Initial version showing detection errors and limited accuracy (~72%).  
+![Version 0.1 Output](./assets/ver0_1.png)
