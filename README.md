@@ -38,7 +38,7 @@ This version is focused on improving the user experience by testing and implemen
 
 **Initial UI Concept**
 An early prototype of the user interface, demonstrating the layout and design direction for improved user interaction.
-![Initial UI Concept](assets/ver1_1_UI.png)
+![Initial UI Concept](assets/ver1_1.png)
 
 ---
 
@@ -50,7 +50,7 @@ A significant feature in this release is the addition of a manual data entry opt
 
 **Manual Data Entry Screen**
 The new user interface screen where users can manually input or edit a license plate number.
-![Manual Data Entry Screen](assets/ver1_3_ManualEntry.png)
+![Manual Data Entry Screen](assets/ver1_3.png)
 
 ---
 
@@ -62,7 +62,7 @@ This version expands the data fields to capture more detailed information about 
 
 **Data Table with Search Functionality**
 A view of the enhanced data table, showcasing the added columns and the new search bar for efficient data filtering.
-![Data Table with Search Functionality](assets/ver1_4_Search.png)
+![Data Table with Search Functionality](assets/ver1_4.png)
 
 ---
 
@@ -74,20 +74,12 @@ In this major architectural shift, the project transitions from a desktop GUI to
 
 **Web App Landing Page**
 The new landing page of the web application, designed for cross-platform access.
-![Web App Landing Page](assets/ver1_5_Landing.png)
+![Web App Landing Page](assets/ver_web_1_5-1.png)
 
 **Real-time License Plate Detection**
 A snapshot of the web application performing real-time license plate detection from a video stream.
-![Real-time License Plate Detection](assets/ver1_5_RealTime.png)
+![Real-time License Plate Detection](assets/ver_web_1_5-3.png)
 
 **Data Entry Form on Web**
 The web-based form for manual data entry, optimized for various screen sizes.
-![Data Entry Form on Web](assets/ver1_5_DataForm.png)
-
-**Search Results on Web UI**
-The user interface displaying search results from the enhanced data management system.
-![Search Results on Web UI](assets/ver1_5_SearchResults.png)
-
-**System Toll Collection Simulation**
-A visual representation of the automated toll collection process, showing a successful vehicle identification and toll charge.
-![System Toll Collection Simulation](assets/ver1_5_TollCollection.png)
+![Data Entry Form on Web](assets/ver_web_1_5-5.png)
