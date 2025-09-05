@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Toll Collection and License Plate Recognition System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .header-text {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .total {
+            font-weight: bold;
+            background-color: lightblue;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .live-feed-container {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+            padding: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .live-feed {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .capture-button, .close-button {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .close-button {
+            top: 10px;
+            bottom: auto;
+            right: 10px;
+            left: auto;
+            transform: none;
+        }
+        .footer-text {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <div class="header-text">Toll Collection and License Plate Recognition System</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="license_plate">License Plate:</label>
+                <input type="text" class="form-control" id="license_plate" placeholder="Enter License Plate">
+            </div>
+            <div class="form-group">
+                <label for="vehicle_type">Vehicle Type:</label>
+                <select class="form-control" id="vehicle_type">
+                    <option>Car</option>
+                    <option>Truck</option>
+                    <option>Bus</option>
+                    <option>Motorcycle</option>
+                    <!--option>GovtBus</option-->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="additional_toll_fee">Additional Toll Fee:</label>
+                <input type="text" class="form-control" id="additional_toll_fee" placeholder="Enter Additional Toll Fee" value="0">
+            </div>
+            <button type="button" class="btn btn-primary mb-2" onclick="uploadImage()">Upload Image</button>
+            <button type="button" class="btn btn-secondary mb-2" onclick="startLiveScan()">Start Live Scan</button>
+            <button type="button" class="btn btn-success mb-2" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="live-feed-container">
+                <div class="capture-button">
+                    <button id="capture_button" class="btn btn-warning" onclick="captureImage()">Capture</button>
+                </div>
+                <div class="close-button">
+                    <button id="close_button" class="btn btn-danger" onclick="closeLiveView()">Close</button>
+                </div>
+                <img id="live_feed" class="live-feed rounded">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 class="text-center">Entries</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>License Plate</th>
+                    <th>Vehicle Type</th>
+                    <th>Toll Fee</th>
+                    <th>Date/Time</th>
+                </tr>
+                </thead>
+                <tbody id="entries_table">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <div id="total_label"></div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <!--<div class="footer-text">
+                &copy; Developed by <a href="https://shashwath-k.github.io/Portfolio-24/">Shashwath</a><br>
+                under the guidance of ------------
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<script>
+    async function uploadImage() {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.onchange = async () => {
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            if (data.license_plate) {
+                document.getElementById('license_plate').value = data.license_plate;
+                document.getElementById('vehicle_type').value = data.vehicle_type;
+            }
+        };
+        fileInput.click();
+    }
+
+    async function submitForm() {
+        const license_plate = document.getElementById('license_plate').value;
+        const vehicle_type = document.getElementById('vehicle_type').value;
+        const additional_toll_fee = document.getElementById('additional_toll_fee').value;
+        const response = await fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ license_plate, vehicle_type, additional_toll_fee })
+        });
+        const data = await response.json();
+        if (data.success) {
+            loadEntries();
+        }
+    }
+
+    async function loadEntries() {
+        const response = await fetch('/load');
+        const entries = await response.json();
+        const tableBody = document.getElementById('entries_table');
+        tableBody.innerHTML = '';
+        let totalTollFee = 0;
+        entries.forEach(entry => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${entry['License Plate']}</td><td>${entry['Vehicle Type']}</td><td>${entry['Toll Fee']}</td><td>${entry['Date/Time']}</td>`;
+            tableBody.appendChild(row);
+            totalTollFee += parseInt(entry['Toll Fee']);
+        });
+        document.getElementById('total_label').innerHTML = `<div class="total">Total Toll Fee: ${totalTollFee}</div>`;
+    }
+
+    async function startLiveScan() {
+        const imageFrame = document.getElementById('live_feed');
+        imageFrame.src = '/video_feed';
+        document.querySelector('.capture-button').style.display = 'block';
+        document.querySelector('.close-button').style.display = 'block';
+    }
+
+    async function captureImage() {
+        const response = await fetch('/capture', {
+            method: 'POST'
+        });
+        const data = await response.json();
+        if (data.license_plate) {
+            document.getElementById('license_plate').value = data.license_plate;
+            document.getElementById('vehicle_type').value = data.vehicle_type;
+        }
+    }
+
+    function closeLiveView() {
+        const imageFrame = document.getElementById('live_feed');
+        imageFrame.src = '';
+        document.querySelector('.capture-button').style.display = 'none';
+        document.querySelector('.close-button').style.display = 'none';
+    }
+
+    window.onload = loadEntries;
+</script>
+</body>
+</html>
