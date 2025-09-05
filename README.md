@@ -1,6 +1,12 @@
 # License_Plate_detection_and_toll_collection
 License_Plate_detection_and_toll_collection is a Python-based computer vision project that automatically detects vehicle license plates from real-time images or video streams and extracts the plate number using Optical Character Recognition (OCR). It simulates an automated toll collection system by identifying registered vehicles.
 
+### Requirements:
+``` bash
+pip install flask pillow opencv-python pytesseract pandas scikit-learn easyocr numpy
+
+```
+
 ## Version 1.0: License Plate Text Extraction with GUI
 Version 1 introduces a simple **Python-based GUI application** for extracting text from license plates using `EasyOCR` and `OpenCV`. It processes images offline and displays the results in a Tkinter interface.
 
