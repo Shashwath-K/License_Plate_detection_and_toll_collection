@@ -31,3 +31,6 @@ Option to enter the license plate manually by entering it with an input device i
 
 ## Version 1.4: Increased fields and implemented search
 This version focused on increasing the column values and best way to filter the data using in-built search. The data will be stored in cache for the current version with future plans to extend the capability to store locally or using Database.
+
+## Version 1.5: Using a WebApp interface 
+We decided to shift the focus from Desktop Gui to Webapp, this is more flexible and accessible across all the platforms and devices of various dimensions. THe plan is to integrate the local save of data.
