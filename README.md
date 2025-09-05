@@ -28,3 +28,6 @@ This version is made with the intention of gamifying the experience. This is jus
 
 ## Version 1.3: Manual approach of data entry
 Option to enter the license plate manually by entering it with an input device is added and also added an option to edit the vehicle number if there are any small descrepencies with the text or number scanned.
+
+## Version 1.4: Increased fields and implemented search
+This version focused on increasing the column values and best way to filter the data using in-built search. The data will be stored in cache for the current version with future plans to extend the capability to store locally or using Database.
