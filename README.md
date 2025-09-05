@@ -23,14 +23,65 @@ Initial version showing detection errors and limited accuracy (~72%).
 ![Version 0.1 Output](./assets/ver0_1.png)
 
 
-## Version 1.1: License Plate Text Extraction with GUI
-This version is made with the intention of gamifying the experience. This is just a random alpha phase for the project where we test out all the grounds on making the user experience better in the view of user requirements.
+---
+## Version 1.1: Project Refinement and User Experience (UX) Enhancement
 
-## Version 1.3: Manual approach of data entry
-Option to enter the license plate manually by entering it with an input device is added and also added an option to edit the vehicle number if there are any small descrepencies with the text or number scanned.
+This version is focused on improving the user experience by testing and implementing various user-centric features. The objective is to refine the interface and functionality based on user requirements. This includes making the application more intuitive and responsive, streamlining workflows, and gathering feedback to guide future development. The primary goal is to enhance the overall usability and make the tool more practical for real-world scenarios.
 
-## Version 1.4: Increased fields and implemented search
-This version focused on increasing the column values and best way to filter the data using in-built search. The data will be stored in cache for the current version with future plans to extend the capability to store locally or using Database.
+### **Snapshots**
 
-## Version 1.5: Using a WebApp interface 
-We decided to shift the focus from Desktop Gui to Webapp, this is more flexible and accessible across all the platforms and devices of various dimensions. THe plan is to integrate the local save of data.
+**Initial UI Concept**
+An early prototype of the user interface, demonstrating the layout and design direction for improved user interaction.
+![Initial UI Concept](assets/ver1_1_UI.png)
+
+---
+
+## Version 1.3: Manual Data Entry and Correction
+
+A significant feature in this release is the addition of a manual data entry option. Users can now input a license plate number directly using a keyboard or other input devices. A new correction feature allows for editing any minor discrepancies in the scanned text, ensuring data accuracy. This addresses potential OCR errors, providing a robust mechanism for maintaining data integrity. This version also includes a validation process to verify the format of the entered license plate numbers.
+
+### **Snapshots**
+
+**Manual Data Entry Screen**
+The new user interface screen where users can manually input or edit a license plate number.
+![Manual Data Entry Screen](assets/ver1_3_ManualEntry.png)
+
+---
+
+## Version 1.4: Enhanced Data Management and Search
+
+This version expands the data fields to capture more detailed information about vehicles and their owners. It also introduces an integrated search function to streamline data retrieval. Users can now filter and find specific records quickly using various criteria. Currently, data is stored in a temporary cache for immediate use, with future plans to transition to a more persistent storage solution, such as a local file system or a relational database, to ensure long-term data retention and scalability.
+
+### **Snapshots**
+
+**Data Table with Search Functionality**
+A view of the enhanced data table, showcasing the added columns and the new search bar for efficient data filtering.
+![Data Table with Search Functionality](assets/ver1_4_Search.png)
+
+---
+
+## Version 1.5: Transition to Web-Based Application
+
+In this major architectural shift, the project transitions from a desktop GUI to a web-based application. This change provides greater accessibility and flexibility across a variety of platforms and devices, allowing users to access the system from any browser. The new web interface is designed to be responsive, ensuring a consistent user experience on desktops, tablets, and mobile devices. The current objective is to integrate local data storage capabilities within this new web framework, paving the way for a more distributed and scalable system.
+
+### **Snapshots**
+
+**Web App Landing Page**
+The new landing page of the web application, designed for cross-platform access.
+![Web App Landing Page](assets/ver1_5_Landing.png)
+
+**Real-time License Plate Detection**
+A snapshot of the web application performing real-time license plate detection from a video stream.
+![Real-time License Plate Detection](assets/ver1_5_RealTime.png)
+
+**Data Entry Form on Web**
+The web-based form for manual data entry, optimized for various screen sizes.
+![Data Entry Form on Web](assets/ver1_5_DataForm.png)
+
+**Search Results on Web UI**
+The user interface displaying search results from the enhanced data management system.
+![Search Results on Web UI](assets/ver1_5_SearchResults.png)
+
+**System Toll Collection Simulation**
+A visual representation of the automated toll collection process, showing a successful vehicle identification and toll charge.
+![System Toll Collection Simulation](assets/ver1_5_TollCollection.png)
